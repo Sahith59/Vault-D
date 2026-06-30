@@ -2,6 +2,10 @@
 
 Standalone Next.js application for testing BoLD against an IDOR/BOLA flaw in a document vault workflow.
 
+## Live Deployment
+
+Production: https://bold-app-4-document-vault.vercel.app
+
 ## Contract
 
 - Route: `app/api/documents/[documentId]/route.ts`
