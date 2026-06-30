@@ -1,8 +1,10 @@
+import { withBold } from "@boldsec/next";
 import { NextResponse } from "next/server";
+import { resolveCallerId } from "../../lib/bold";
 import { findUserByEmail, publicUser } from "../../lib/data";
 import { setSessionCookie } from "../../lib/session";
 
-export async function POST(request: Request) {
+async function _bold_POST(request: Request) {
   const body = await request.json().catch(() => null);
   const email = String(body?.email || "");
   const password = String(body?.password || "");
@@ -16,3 +18,8 @@ export async function POST(request: Request) {
   setSessionCookie(response, user);
   return response;
 }
+
+export const POST = withBold(
+  _bold_POST,
+  { resolveCallerId }
+);

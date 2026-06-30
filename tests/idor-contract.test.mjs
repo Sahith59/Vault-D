@@ -8,7 +8,7 @@ const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8")
 const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
 
 test("document route exports GET at the requested dynamic route", () => {
-  assert.match(route, /export\s+async\s+function\s+GET/);
+  assert.match(route, /export\s+const\s+GET\s*=\s*withBold/);
   assert.match(readme, /app\/api\/documents\/\[documentId\]\/route\.ts/);
   assert.match(readme, /\/api\/documents\/doc_board_packet_101/);
 });
